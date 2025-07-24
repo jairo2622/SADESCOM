@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+.navbar {
+    background-color: #b2bebf !important;
+}
+
+.colmuna1 {
+    background-color: #b2bebf;
+}
+
+.apartados {
+    margin-top: 45px;
+}
+
+.nav-link {
+    color: #074775;
+    font-size: 20px;
+    font-weight: bolder;
+    border-bottom: 2px solid #6464649d;
+}
+
+.nav-link:hover {
+    background-color: #e0790d;
+    color: #fff;
+    border-radius: 20px 20px 0 0;
+    border-bottom: 2px solid #e0790d;
+    transition: 300ms;
+}
+
+.contenido {
+    padding-top: 35px;
+    padding-left: 45px;
+    border-radius: 20px 0 0 0;
+    border-top: 2px solid #000;
+    border-left: 2px solid #000;
+    outline: 8px solid #b2bebf;
+}
+
+h2 {
+    color: #074775;
+    font-weight: bolder;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    margin-bottom: 20px;
+}
+
+input {
+    margin-bottom: 18px;
+}
+
+textarea {
+    margin-bottom: 18px;
+}
+
+table {
+    margin-top: 25px;
+}
+
+.btn-primary {
+    background-color: #074775;
+    border: #074775;
+}
+
+.page-item .page-link {
+    color: #074775;
+}
+
+.page-item.active .page-link {
+    background-color: #074775;
+    border: #074775;
+    color: #fff;
+}
+
+.colores{
+    width: 120px;
+}
