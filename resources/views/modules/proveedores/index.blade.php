@@ -4,15 +4,38 @@
     <h2>PROVEEDORES</h2>
 
     <div class="container">
-        <a href="{{ route('createproveedores') }}" class="btn btn-primary d-inline-flex align-items-center gap-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-plus-circle-fill" viewBox="0 0 16 16" role="img" aria-label="Agregar">
-                <path
-                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z" />
-            </svg>
-            Agregar proveedores
-        </a>
-        <table class="table table-striped table-bordered text-center">
+        <div class="row">
+            <div class="col-2">
+                <a href="{{ route('createproveedores') }}" class="btn btn-primary d-inline-flex align-items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-plus-circle-fill" viewBox="0 0 16 16" role="img" aria-label="Agregar">
+                        <path
+                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z" />
+                    </svg>
+                    Agregar proveedor
+                </a>
+            </div>
+
+            <div class="col-3">
+                <div class="input-group mb-2 buscador">
+                    <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg"
+                            class="icon icon-tabler icon-tabler-list-search" width="28" height="28"
+                            viewBox="0 0 24 24" stroke-width="2.5" stroke="#2769A0" fill="none" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <circle cx="15" cy="15" r="4" />
+                            <path d="M18.5 18.5l2.5 2.5" />
+                            <path d="M4 6h16" />
+                            <path d="M4 12h4" />
+                            <path d="M4 18h4" />
+                        </svg></span>
+                    <input type="text" class="form-control light-table-filter" data-table="tabla_proveedores"
+                        placeholder="Busqueda">
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-striped table-bordered text-center tabla_proveedores">
             <thead>
                 <tr>
                     <th>Nombre del proveedor</th>
@@ -79,15 +102,5 @@
         </div>
     </div>
 
-    <script>
-        function ConfirmarEliminacion() {
 
-            var respuesta = confirm("¿Seguro que deseas eliminar a este proveedor?");
-            if (respuesta == true) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    </script>
 @endsection

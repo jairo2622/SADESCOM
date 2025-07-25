@@ -60,6 +60,14 @@ table {
     border: #074775;
 }
 
+.buscador{
+    height: 50px;
+}
+
+.input-group-text{
+    height: 38px;
+}
+
 .page-item .page-link {
     color: #074775;
 }
