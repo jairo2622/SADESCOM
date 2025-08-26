@@ -42,7 +42,7 @@
                         <a class="nav-link" href="{{ route('cronograma') }}">Cronograma</a>
                     </li>
                     <li class="nav-item apartados">
-                        <a class="nav-link" href="#">Ventas</a>
+                        <a class="nav-link" href="{{ route('ventas') }}">Ventas</a>
                     </li>
                     <li class="nav-item apartados">
                         <a class="nav-link" href="#">PyG</a>

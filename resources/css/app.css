@@ -81,3 +81,11 @@ table {
 .colores{
     width: 120px;
 }
+
+.columna_ventas{
+    width: 325px;
+}
+
+.bg-primary{
+    background-color: #0747758c !important;
+}

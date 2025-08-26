@@ -51,3 +51,8 @@ Route::post('/cronograma/store', [Cronograma::class, 'store'])->name('storecrono
 Route::get('/cronograma/edit/{id}', [Cronograma::class, 'edit'])->name('editcronograma');
 Route::put('/cronograma/update/{id}', [Cronograma::class, 'update'])->name('updatecronograma');
 Route::get('/cronograma/destroy/{id}', [Cronograma::class, 'destroy'])->name('destroycronograma');
+
+Route::get('/ventas', function () {
+    $items = \App\Models\Inventario::all();
+    return view('modules/ventas/index', compact('items'));
+})->name('ventas');
