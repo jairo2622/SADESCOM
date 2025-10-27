@@ -1,10 +1,10 @@
 @extends('layouts/main')
 
 @section('contenido')
-    <h2>ACTUALIZAR INFORMACIÓN DE {{ $item->nombre }}</h2>
+    <h2 class="text-center mt-3 mb-4">ACTUALIZAR INFORMACIÓN DE {{ $item->nombre }}</h2>
 
     <div class="container">
-        <form action="{{ route('updateinventario', $item->id) }}" method="POST">
+        <form action="{{ route('updateinventario', $item->id) }}" method="POST" class="formularios">
             @csrf
             @method('PUT')
             <label for="nombre">Nombre del producto</label>

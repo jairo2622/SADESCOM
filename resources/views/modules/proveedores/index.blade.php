@@ -1,7 +1,7 @@
 @extends('layouts/main')
 
 @section('contenido')
-    <h2>PROVEEDORES</h2>
+    <h2 class="text-center mt-3 mb-4">PROVEEDORES</h2>
 
     <div class="container">
         <div class="row">
@@ -35,8 +35,8 @@
             </div>
         </div>
 
-        <table class="table table-striped table-bordered text-center tabla_proveedores">
-            <thead>
+        <table class="table table-striped table-bordered text-center shadow tabla_proveedores table_apartados">
+            <thead class="table-dark">
                 <tr>
                     <th>Nombre del proveedor</th>
                     <th>Productos</th>
@@ -81,7 +81,7 @@
                                     </svg>Editar</a>
 
                                 <button class="btn btn-danger d-inline-flex align-items-center gap-1" type="submit"
-                                    onclick="return ConfirmarEliminacion()"><svg xmlns="http://www.w3.org/2000/svg"
+                                    onclick="return ConfirmarEliminacionProveedores()"><svg xmlns="http://www.w3.org/2000/svg"
                                         width="16" height="16" fill="currentColor" class="bi bi-trash3"
                                         viewBox="0 0 16 16">
                                         <path

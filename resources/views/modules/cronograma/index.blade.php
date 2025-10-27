@@ -1,13 +1,7 @@
 @extends('layouts/main')
 
 @section('contenido')
-    <h2>CRONOGRAMA</h2>
-
-    <!-- FullCalendar -->
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.18/index.global.min.js"></script>
-
-    <!-- SweetAlert2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <h2 class="text-center mt-3 mb-4" style="margin-left: -80px">CRONOGRAMA</h2>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -56,6 +50,7 @@
 
     <div class="container-fluid">
         <div class="row">
+            <div class="col-5"></div>
             <div class="col-2">
                 <a href="{{ route('createcronograma') }}" class="btn btn-primary d-inline-flex align-items-center gap-1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -66,10 +61,13 @@
                     Agregar evento
                 </a>
             </div>
+            <div class="col-5"></div>
+
+            <div class="col-2"></div>
             <div class="col-8">
                 <div id='calendar'></div>
             </div>
-            <div class="col-1"></div>
+            <div class="col-2"></div>
         </div>
     </div>
 

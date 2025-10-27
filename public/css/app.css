@@ -41,6 +41,7 @@ h2 {
     font-weight: bolder;
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
     margin-bottom: 20px;
+    text-shadow: 1px 1px #fff, 2px 2px #074775;
 }
 
 input {
@@ -52,7 +53,24 @@ textarea {
 }
 
 table {
-    margin-top: 250000px;
+    margin-top: 25px;
+}
+
+.formularios {
+    background-color: #b2bebfb9;
+    border-radius: 25px;
+    padding: 28px;
+    box-shadow: 10px 10px 20px -4px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 10px 10px 20px -4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 20px -4px rgba(0, 0, 0, 0.75);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.formularios label{
+    color: #074775;
+    text-shadow: 2px 2px #fff;
+    margin-bottom: 8px;
 }
 
 .btn-primary {
@@ -60,11 +78,11 @@ table {
     border: #074775;
 }
 
-.buscador{
+.buscador {
     height: 50px;
 }
 
-.input-group-text{
+.input-group-text {
     height: 38px;
 }
 
@@ -78,16 +96,34 @@ table {
     color: #fff;
 }
 
-.colores{
+.colores {
     width: 120px;
 }
 
-.columna_ventas{
+.columna_ventas {
     width: 325px;
 }
 
-.bg-primary{
+.bg-primary {
     background-color: #0747758c !important;
 }
 
-/* Este archivo ya no funciona
+.table_apartados thead tr th {
+    background-color: #074775 !important;
+}
+
+table {
+    animation: scale-up-vertical-top 0.4s ease-out;
+    transform-origin: center top;
+}
+
+@keyframes scale-up-vertical-top {
+    0% {
+        transform: scaleY(0.4);
+        opacity: 0.3;
+    }
+    100% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+}

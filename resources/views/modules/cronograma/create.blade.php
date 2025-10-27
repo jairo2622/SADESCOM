@@ -1,10 +1,10 @@
 @extends('layouts/main')
 
 @section('contenido')
-    <h2>AGREGAR EVENTO</h2>
+    <h2 class="text-center mt-3 mb-4">AGREGAR EVENTO</h2>
 
     <div class="container">
-        <form action="{{ route('storecronograma') }}" method="POST">
+        <form action="{{ route('storecronograma') }}" method="POST" class="formularios">
             @csrf
             @method('POST')
             <label for="title">Titulo</label>

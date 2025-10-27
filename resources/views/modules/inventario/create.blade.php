@@ -1,10 +1,10 @@
 @extends('layouts/main')
 
 @section('contenido')
-    <h2>AGREGAR PRODUCTO</h2>
+    <h2 class="text-center mt-3 mb-4">AGREGAR PRODUCTO</h2>
 
     <div class="container">
-        <form action="{{ route('storeinventario') }}" method="POST">
+        <form action="{{ route('storeinventario') }}" method="POST" class="formularios">
             @csrf
             @method('POST')
             <label for="nombre">Nombre del producto</label>

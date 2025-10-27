@@ -6,11 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SADESCOM</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
 
-    @vite('resources/css/app.css')
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <link rel="shortcut icon" href="{{ asset('images/icono2.ico') }}" type="image/x-icon">
 
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+    <!-- FullCalendar CSS -->
+    <link href="{{ asset('css/daygrid/index.global.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/timegrid/index.global.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/list/index.global.min.css') }}" rel="stylesheet">
+
+
+    <!-- FullCalendar JS -->
+    <script src="{{ asset('js/index.global.min.js') }}"></script>
+    <script src="{{ asset('js/locales-all.global.min.js') }}"></script>
+    <script src="{{ asset('js/daygrid/index.global.min.js') }}"></script>
+    <script src="{{ asset('js/timegrid/index.global.min.js') }}"></script>
+    <script src="{{ asset('js/list/index.global.min.js') }}"></script>
+
+    <!-- Tu script de inicialización -->
+    <script src="{{ asset('js/app.js') }}"></script>
+
+
+    <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
 
 </head>
 
@@ -45,7 +65,7 @@
                         <a class="nav-link" href="{{ route('ventas') }}">Ventas</a>
                     </li>
                     <li class="nav-item apartados">
-                        <a class="nav-link" href="#">PyG</a>
+                        <a class="nav-link" href="{{ route('reportes') }}">Reportes PYG</a>
                     </li>
                 </ul>
             </div>
@@ -58,59 +78,90 @@
 
 
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous">
-</script>
-    <script>
-        function ConfirmarEliminacion() {
 
-            var respuesta = confirm("¿Seguro que deseas eliminar a este proveedor?");
-            if (respuesta == true) {
-                return true;
-            } else {
-                return false;
-            }
+<script>
+    function ConfirmarEliminacionProveedores() {
+
+        var respuesta = confirm("¿Seguro que deseas eliminar a este proveedor?");
+        if (respuesta == true) {
+            return true;
+        } else {
+            return false;
         }
+    }
 
-        (function(document) {
-            'buscador';
+    function ConfirmarEliminacionProductos() {
 
-            var LightTableFilter = (function(Arr) {
+        var respuesta = confirm("¿Seguro que deseas eliminar a este producto?");
+        if (respuesta == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-                var _input;
+    (function(document) {
+        'buscador';
 
-                function _onInputEvent(e) {
-                    _input = e.target;
-                    var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
-                    Arr.forEach.call(tables, function(table) {
-                        Arr.forEach.call(table.tBodies, function(tbody) {
-                            Arr.forEach.call(tbody.rows, _filter);
-                        });
+        var LightTableFilter = (function(Arr) {
+
+            var _input;
+
+            function _onInputEvent(e) {
+                _input = e.target;
+                var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+                Arr.forEach.call(tables, function(table) {
+                    Arr.forEach.call(table.tBodies, function(tbody) {
+                        Arr.forEach.call(tbody.rows, _filter);
+                    });
+                });
+            }
+
+            function _filter(row) {
+                var text = row.textContent.toLowerCase(),
+                    val = _input.value.toLowerCase();
+                row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+            }
+
+            return {
+                init: function() {
+                    var inputs = document.getElementsByClassName('light-table-filter');
+                    Arr.forEach.call(inputs, function(input) {
+                        input.oninput = _onInputEvent;
                     });
                 }
+            };
+        })(Array.prototype);
 
-                function _filter(row) {
-                    var text = row.textContent.toLowerCase(),
-                        val = _input.value.toLowerCase();
-                    row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
-                }
+        document.addEventListener('readystatechange', function() {
+            if (document.readyState === 'complete') {
+                LightTableFilter.init();
+            }
+        });
 
-                return {
-                    init: function() {
-                        var inputs = document.getElementsByClassName('light-table-filter');
-                        Arr.forEach.call(inputs, function(input) {
-                            input.oninput = _onInputEvent;
-                        });
+        const monthInput = document.querySelector('.month-filter');
+        if (monthInput) {
+            monthInput.addEventListener('input', function() {
+                const value = this.value.toLowerCase();
+                const sections = document.querySelectorAll('.month-title');
+
+                sections.forEach(section => {
+                    const periodo = section.getAttribute('data-periodo').toLowerCase();
+                    const table = section.nextElementSibling;
+
+                    // Mostrar u ocultar según coincidencia
+                    if (periodo.includes(value) || value === '') {
+                        section.style.display = '';
+                        if (table) table.style.display = '';
+                    } else {
+                        section.style.display = 'none';
+                        if (table) table.style.display = 'none';
                     }
-                };
-            })(Array.prototype);
-
-            document.addEventListener('readystatechange', function() {
-                if (document.readyState === 'complete') {
-                    LightTableFilter.init();
-                }
+                });
             });
+        }
 
-        })(document);
-    </script>
+    })(document);
+</script>
+
 </html>

@@ -3,6 +3,9 @@
 use App\Http\Controllers\Cronograma;
 use App\Http\Controllers\Inventario;
 use App\Http\Controllers\Proveedores;
+use App\Http\Controllers\Pyg;
+use App\Http\Controllers\Reportes;
+use App\Http\Controllers\Ventas;
 use App\Models\Cronograma as ModelsCronograma;
 use Illuminate\Support\Facades\Route;
 
@@ -56,3 +59,21 @@ Route::get('/ventas', function () {
     $items = \App\Models\Inventario::all();
     return view('modules/ventas/index', compact('items'));
 })->name('ventas');
+
+
+Route::post('/ventas/store', [Ventas::class, 'store'])->name('storeventas');
+
+
+Route::get('/pyg', function () {
+    $items = \App\Models\ventas::orderBy('created_at', 'desc')->get();
+    return view('modules/pyg/index', compact('items'));
+})->name('ganancias');
+
+Route::get('/perdidas', [Pyg::class, 'index'])->name('perdidas');
+Route::get('/pyg/create', [Pyg::class, 'create'])->name('createperdida');
+Route::post('/pyg/store', [Pyg::class, 'store'])->name('storeperdida');
+
+
+Route::get('/reportes', [Reportes::class, 'index'])->name('reportes');
+
+Route::get('/reportes/pdf/{mes}', [App\Http\Controllers\Reportes::class, 'generarPDF'])->name('reportes.pdf');

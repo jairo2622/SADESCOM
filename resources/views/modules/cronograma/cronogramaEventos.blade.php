@@ -1,11 +1,28 @@
 <?php
-header('Contert-Type: application/json');
+header('Content-Type: application/json');
 
-$pdo = new PDO("mysql:dbname=db_sadescom;host=127.0.0.1", "root", "");
+try {
+    $dbPath = __DIR__ . '/../database/database.sqlite';
 
+    $pdo = new PDO("sqlite:" . $dbPath);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$sentenciaSQL = $pdo -> prepare("SELECT*FROM cronogramas");
-$sentenciaSQL -> execute();
+    $sentenciaSQL = $pdo->prepare("SELECT id, descripcion, fecha_inicio, fecha_fin FROM cronogramas");
+    $sentenciaSQL->execute();
+    $datos = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 
-$resultado = $sentenciaSQL -> fetchAll(PDO::FETCH_ASSOC);
-echo json_encode($resultado);
+    $eventos = [];
+    foreach ($datos as $row) {
+        $eventos[] = [
+            'id'    => $row['id'],
+            'title' => $row['descripcion'],
+            'start' => $row['fecha_inicio'],
+            'end'   => $row['fecha_fin']
+        ];
+    }
+
+    echo json_encode($eventos);
+
+} catch (PDOException $e) {
+    echo json_encode(['error' => $e->getMessage()]);
+}

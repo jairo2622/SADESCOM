@@ -1,11 +1,13 @@
 @extends('layouts/main')
 
 @section('contenido')
+    <h2 class="text-center mt-3 mb-4">VENTAS</h2>
+
     <div class="container">
-        <form action="" method="POST">
+        <form action="{{ route('storeventas') }}" method="POST">
             @csrf
-            <table class="table table-striped table-bordered text-center" id="tabla_ventas">
-                <thead>
+            <table class="table table-striped table-bordered text-center table_apartados" id="tabla_ventas">
+                <thead class="table-dark">
                     <tr>
                         <th>Producto</th>
                         <th>Precio Unidad</th>
@@ -41,7 +43,9 @@
                     {{-- 🔹 Nueva fila: Pago del cliente --}}
                     <tr>
                         <td colspan="3" class="text-end"><strong>Pago del Cliente:</strong></td>
-                        <td><input type="number" id="pago_cliente" class="form-control" min="0" placeholder="0"></td>
+                        <td><input type="number" id="pago_cliente" class="form-control" min="0"
+                                placeholder="0">
+                        </td>
                     </tr>
                     {{-- 🔹 Nueva fila: Cambio --}}
                     <tr>

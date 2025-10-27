@@ -1,11 +1,11 @@
 @extends('layouts/main')
 
 @section('contenido')
-    <h2>INFORMACIÓN DEL PROVEEDOR {{ $item->nombre }}</h2>
+    <h2 class="text-center mt-3 mb-4">INFORMACIÓN DEL PROVEEDOR {{ $item->nombre }}</h2>
 
     <div class="container">
-        <table class="table table-striped table-bordered text-center">
-            <thead>
+        <table class="table table-striped table-bordered text-center table_apartados">
+            <thead class="table-dark">
                 <tr>
                     <th>Nombre del proveedor</th>
                     <th>Productos</th>

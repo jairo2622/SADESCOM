@@ -1,7 +1,7 @@
 @extends('layouts/main')
 
 @section('contenido')
-    <h2>ACTUALIZAR EVENTO {{ $item->title }}</h2>
+    <h2 class="text-center mt-3 mb-4">ACTUALIZAR EVENTO {{ $item->title }}</h2>
 
     <div class="container">
         <form action="{{ route('updatecronograma', $item->id) }}" method="POST">
